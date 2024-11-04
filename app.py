@@ -99,7 +99,7 @@ st.markdown("""
         padding: 0.5rem 1rem;
         margin-right: 25%;
         float: left;
-        border: 0.2px solid #2C2C2C;  /* Subtle border */
+        border: 0.2px solid #080808;  /* Subtle border */
     }
     .user .content {
         background-color: #1E1E1E;  /* Slightly lighter dark for user */
@@ -108,7 +108,7 @@ st.markdown("""
         padding: 0.5rem 1rem;
         margin-left: 25%;
         float: right;
-        border: 0.2px solid #2C2C2C;  /* Subtle border */
+        border: 0.2px solid #080808;  /* Subtle border */
     }
     </style>
 """, unsafe_allow_html=True)
