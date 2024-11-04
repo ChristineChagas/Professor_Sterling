@@ -15,7 +15,7 @@ warnings.filterwarnings("ignore")
 # Define the page config at the start
 st.set_page_config(
     page_title="Professor Sterling: The Trading Expert",
-    page_icon="Images/professor_sterling.png",
+    page_icon=r"https://github.com/ChristineChagas/Professor_Sterling/blob/main/Images/professor_sterling.png?raw=true",
     layout="wide"
 )
 
@@ -158,9 +158,9 @@ if 'message' not in st.session_state:
 
 # Sidebar setup
 with st.sidebar:
-    st.image("Images/professor_sterling.png", use_column_width=True)
+    st.image(r"https://github.com/ChristineChagas/Professor_Sterling/blob/main/Images/professor_sterling.png?raw=true", use_column_width=True)
     
-    openai.api_key = st.secrets["OPENAI_API_KEY"]
+    openai.api_key = st.text_input('Enter OpenAI API token:', type='password')
     if not (openai.api_key.startswith('sk-') and len(openai.api_key) == 164):
         st.warning('Please enter your OpenAI API token')
     else:
@@ -186,7 +186,7 @@ with st.sidebar:
 # Main page content based on the selected option
 if selected_option == "AI Model":
     # Add AI Republic image at the top of main page
-    st.image("Images/ai_republic.png", width=100)
+    st.image("https://raw.githubusercontent.com/ChristineChagas/Professor_Sterling/refs/heads/main/Images/ai_republic.png", width=100)
     
     # Title and introduction in a bubble using full width
     st.markdown(f"""
@@ -208,7 +208,7 @@ if selected_option == "AI Model":
     
 
 elif selected_option == "Talk to Professor Sterling":
-    st.image("Images/ai_republic.png", width=100)
+    st.image("https://raw.githubusercontent.com/ChristineChagas/Professor_Sterling/refs/heads/main/Images/ai_republic.png", width=100)
     
     # For displaying existing messages
     for messages in st.session_state.message:
@@ -217,7 +217,7 @@ elif selected_option == "Talk to Professor Sterling":
         
         if messages['role'] == "assistant":
             # Professor's messages on the left with image and bubble
-            with st.chat_message("assistant", avatar="Images/professor_sterling.png"):
+            with st.chat_message("assistant", avatar=r"https://github.com/ChristineChagas/Professor_Sterling/blob/main/Images/professor_sterling.png?raw=true"):
                 st.markdown(f"""
                     <div style="background: linear-gradient(145deg, #121212, #1a1a1a); 
                               color: #D2D2D2; 
@@ -283,7 +283,7 @@ elif selected_option == "Talk to Professor Sterling":
 What makes her stand out? It's not just her remarkable aptitude for trading, but her analytical mindset and genuine enthusiasm for learning. Do remember, while Christine has earned this recognition, every student can be sterling!"""
         else:
             chat = openai.ChatCompletion.create(
-                model="gpt-4",
+                model="gpt-4o-mini",
                 messages=st.session_state.message,
                 temperature=0.5,
                 max_tokens=1500,
@@ -294,7 +294,7 @@ What makes her stand out? It's not just her remarkable aptitude for trading, but
             response = chat.choices[0].message.content
 
         # Professor response with image and bubble
-        with st.chat_message("assistant", avatar="Images/professor_sterling.png"):
+        with st.chat_message("assistant", avatar=r"https://github.com/ChristineChagas/Professor_Sterling/blob/main/Images/professor_sterling.png?raw=true"):
             st.markdown(f"""
                 <div style="background-color: #121212; 
                           color: #F2F2F2; 
@@ -312,7 +312,7 @@ What makes her stand out? It's not just her remarkable aptitude for trading, but
         st.session_state.message.append({"role": "assistant", "content": response})
 
 elif selected_option == "Sterling's Starling Awardee":
-    st.image("Images/ai_republic.png", width=100)
+    st.image("https://raw.githubusercontent.com/ChristineChagas/Professor_Sterling/refs/heads/main/Images/ai_republic.png", width=100)
     st.markdown('<p style="color: #D2D2D2;">The recipient of Sterling\'s Starling Award is given to the most improved in class:</p>', unsafe_allow_html=True)
     
     # Create two columns with some spacing
@@ -320,7 +320,7 @@ elif selected_option == "Sterling's Starling Awardee":
     
     # Left column for image
     with left_col:
-        st.image("Images/christine.jpg")
+        st.image("https://raw.githubusercontent.com/ChristineChagas/Professor_Sterling/refs/heads/main/Images/christine.jpg")
     
     # Right column for text in a bubble
     with right_col:
