@@ -15,7 +15,7 @@ warnings.filterwarnings("ignore")
 # Define the page config at the start
 st.set_page_config(
     page_title="Professor Sterling: The Trading Expert",
-    page_icon=r"C:\Users\chaga\OneDrive\Desktop\AI_Engineering_Bootcamp\Professor_Sterling\Images\professor_sterling.png",
+    page_icon=r"Images\professor_sterling.png",
     layout="wide"
 )
 
