@@ -1,4 +1,4 @@
-import os
+ import os
 import openai
 import numpy as np
 import pandas as pd
@@ -15,7 +15,7 @@ warnings.filterwarnings("ignore")
 # Define the page config at the start
 st.set_page_config(
     page_title="Professor Sterling: The Trading Expert",
-    page_icon="Images/professor_sterling.png",
+    page_icon="Professor_Sterling/Images/professor_sterling.png",
     layout="wide"
 )
 
@@ -158,7 +158,7 @@ if 'message' not in st.session_state:
 
 # Sidebar setup
 with st.sidebar:
-    st.image("Images/professor_sterling.png", use_column_width=True)
+    st.image("Professor_Sterling/Images/professor_sterling.png", use_column_width=True)
     
     openai.api_key = st.text_input('Enter OpenAI API token:', type='password')
     if not (openai.api_key.startswith('sk-') and len(openai.api_key) == 164):
@@ -186,7 +186,7 @@ with st.sidebar:
 # Main page content based on the selected option
 if selected_option == "AI Model":
     # Add AI Republic image at the top of main page
-    st.image("Images/ai_republic.png", width=100)
+    st.image("Professor_Sterling/Images/ai_republic.png", width=100)
     
     # Title and introduction in a bubble using full width
     st.markdown(f"""
@@ -208,7 +208,7 @@ if selected_option == "AI Model":
     
 
 elif selected_option == "Talk to Professor Sterling":
-    st.image("Images/ai_republic.png", width=100)
+    st.image("Professor_Sterling/Images/ai_republic.png", width=100)
     
     # For displaying existing messages
     for messages in st.session_state.message:
@@ -312,7 +312,7 @@ What makes her stand out? It's not just her remarkable aptitude for trading, but
         st.session_state.message.append({"role": "assistant", "content": response})
 
 elif selected_option == "Sterling's Starling Awardee":
-    st.image("Images/ai_republic.png", width=100)
+    st.image("Professor_Sterling/Images/ai_republic.png", width=100)
     st.markdown('<p style="color: #D2D2D2;">The recipient of Sterling\'s Starling Award is given to the most improved in class:</p>', unsafe_allow_html=True)
     
     # Create two columns with some spacing
