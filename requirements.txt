@@ -9,3 +9,7 @@ langchain
 langchain_community
 scipy
 scikit-learn
+numpy
+pandas
+PyPDF2
+python-docx
