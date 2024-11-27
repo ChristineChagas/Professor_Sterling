@@ -161,7 +161,7 @@ if 'message' not in st.session_state:
 
 # Sidebar setup
 with st.sidebar:
-    st.image(r"C:\Users\chaga\OneDrive\Desktop\AI_Engineering_Bootcamp\Professor_Sterling\Images\professor_sterling.png", use_column_width=True)
+    st.image("Images/professor_sterling.png", use_column_width=True)
     
     openai.api_key = st.text_input('Enter OpenAI API token:', type='password')
     if not (openai.api_key.startswith('sk-') and len(openai.api_key) == 164):
@@ -220,7 +220,7 @@ elif selected_option == "Talk to Professor Sterling":
         
         if messages['role'] == "assistant":
             # Professor's messages on the left with image and bubble
-            with st.chat_message("assistant", avatar=r"C:\Users\chaga\OneDrive\Desktop\AI_Engineering_Bootcamp\Professor_Sterling\Images\professor_sterling.png"):
+            with st.chat_message("assistant", avatar="Images/professor_sterling.png"):
                 st.markdown(f"""
                     <div style="background: linear-gradient(145deg, #121212, #1a1a1a); 
                               color: #D2D2D2; 
@@ -297,7 +297,7 @@ What makes her stand out? It's not just her remarkable aptitude for trading, but
             response = chat.choices[0].message.content
 
         # Professor response with image and bubble
-        with st.chat_message("assistant", avatar=r"C:\Users\chaga\OneDrive\Desktop\AI_Engineering_Bootcamp\Professor_Sterling\Images\professor_sterling.png"):
+        with st.chat_message("assistant", avatar="Images/professor_sterling.png"):
             st.markdown(f"""
                 <div style="background-color: #121212; 
                           color: #F2F2F2; 
