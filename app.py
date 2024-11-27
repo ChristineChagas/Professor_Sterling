@@ -17,7 +17,7 @@ import openpyxl
 # Set warnings to ignore
 warnings.filterwarnings("ignore")
 
-# Define the page config at the start
+# Set the page configuration
 st.set_page_config(
     page_title="Professor Sterling: The Trading Expert",
     page_icon="Images/professor_sterling.png",
@@ -25,10 +25,11 @@ st.set_page_config(
 )
 
 # Load external CSS
-try:
-    with open("styles.css") as f:
+css_file = "styles.css"
+if os.path.exists(css_file):
+    with open(css_file) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-except FileNotFoundError:
+else:
     st.error("CSS file not found. Ensure 'styles.css' is in the app directory.")
 
 # Initialize session state for tracking page views and unique visitors
@@ -59,9 +60,10 @@ System_Prompt = """Role:
 
 # Initialize message state
 if 'message' not in st.session_state:
-    st.session_state['message'] = []
-    st.session_state.message.append({"role": "system", "content": System_Prompt})
-    st.session_state.message.append({"role": "assistant", "content": "Welcome! I'm Professor Sterling, your guide through the fascinating world of trading and finance. What would you like to learn about today?"})
+    st.session_state['message'] = [
+        {"role": "system", "content": System_Prompt},
+        {"role": "assistant", "content": "Welcome! I'm Professor Sterling, your guide through the fascinating world of trading and finance. What would you like to learn about today?"}
+    ]
 
 # Sidebar setup
 with st.sidebar:
@@ -118,19 +120,22 @@ elif selected_option == "Talk to Professor Sterling":
     if user_message := st.chat_input("Ask Professor Sterling"):
         st.session_state.message.append({"role": "user", "content": user_message})
 
-        chat = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=st.session_state.message,
-            temperature=0.5,
-            max_tokens=1500,
-            top_p=1,
-            frequency_penalty=0,
-            presence_penalty=0
-        )
-        response = chat.choices[0].message.content
-        st.session_state.message.append({"role": "assistant", "content": response})
-        with st.chat_message("assistant", avatar="Images/professor_sterling.png"):
-            st.markdown(response, unsafe_allow_html=True)
+        try:
+            chat = openai.ChatCompletion.create(
+                model="gpt-4",
+                messages=st.session_state.message,
+                temperature=0.5,
+                max_tokens=1500,
+                top_p=1,
+                frequency_penalty=0,
+                presence_penalty=0
+            )
+            response = chat.choices[0].message.content
+            st.session_state.message.append({"role": "assistant", "content": response})
+            with st.chat_message("assistant", avatar="Images/professor_sterling.png"):
+                st.markdown(response, unsafe_allow_html=True)
+        except Exception as e:
+            st.error(f"Error generating response: {e}")
 
 elif selected_option == "Document Analysis":
     st.image("Images/ai_republic.png", width=100)
