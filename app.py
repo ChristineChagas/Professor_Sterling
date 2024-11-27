@@ -161,7 +161,7 @@ if 'message' not in st.session_state:
 
 # Sidebar setup
 with st.sidebar:
-    st.image("Images/professor_sterling.png", use_column_width=True)
+    st.image("Images/professor_sterling.png", width=200)
     
     openai.api_key = st.text_input('Enter OpenAI API token:', type='password')
     if not (openai.api_key.startswith('sk-') and len(openai.api_key) == 164):
@@ -189,7 +189,7 @@ with st.sidebar:
 # Main page content based on the selected option
 if selected_option == "AI Model":
     # Add AI Republic image at the top of main page
-    st.image("Images/ai_republic.png", width=50)
+    st.image("Images/ai_republic.png", width=100)
     
     # Title and introduction in a bubble using full width
     st.markdown(f"""
