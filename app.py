@@ -19,7 +19,6 @@ warnings.filterwarnings("ignore")
 st.set_page_config(
     page_title="Professor Sterling: The Trading Expert",
     page_icon="Images/professor_sterling.png",
-    width= 200,
     layout="wide"
 )
 
@@ -190,7 +189,7 @@ with st.sidebar:
 # Main page content based on the selected option
 if selected_option == "AI Model":
     # Add AI Republic image at the top of main page
-    st.image("Images/ai_republic.png", width=100)
+    st.image("Images/ai_republic.png", width=50)
     
     # Title and introduction in a bubble using full width
     st.markdown(f"""
