@@ -19,7 +19,7 @@ warnings.filterwarnings("ignore")
 st.set_page_config(
     page_title="Professor Sterling: The Trading Expert",
     page_icon="Images/professor_sterling.png",
-    width= 200
+    width= 200,
     layout="wide"
 )
 
